@@ -34,5 +34,21 @@ GO
 
 
 --● Create Foreign key constraints from diagram or with script
---● List all possible combinations of Courses names and AchievementType names that can be passed by student
+
+
+--● List all possible combinations of Courses names and AchievementType names that can be passed by studentѕ
+SELECT  c.Name, a.Name
+FROM  [dbo].[Course] c , [dbo].[AchievementType] a 
+
+SELECT c.Name, a.Name
+FROM [dbo].[Course] c
+CROSS JOIN [dbo].[AchievementType] a
+
+
+
 --● List all Teachers without exam Grade
+SELECT t.ID, t.FirstName, g.Grade 
+FROM [dbo].[Teacher] t
+LEFT JOIN [dbo].[Grade] g ON t.ID = g.TeacherID
+WHERE g.Grade IS NULL
+GO
